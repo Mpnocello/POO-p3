@@ -85,8 +85,15 @@ public class ClienteService {
             clienteDTOS.add(new ClienteDTO(cliente.getNome(),cliente.getCpf(),cliente.getTelefoneResidencial()
                     ,cliente.getTelefoneComercial(), cliente.getTelefoneCelular(), cliente.getEmail(),
                     new Endereço(cliente.getEndereço().getResidencial(),cliente.getEndereço().getComercial()),
-                    cliente.getSenha()));
+                    null));
         }
         return clienteDTOS;
+    }
+
+    public String login(String nome, String senha){
+
+        String retorno = repo.login(nome, senha);
+
+        return retorno;
     }
 }

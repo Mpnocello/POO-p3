@@ -20,4 +20,18 @@ public class ClienteRepository {
     public List<ClienteEntity> retornaCliente(){
         return listaCliente;
     }
+
+    public String login(String nome, String senha){
+        String retorno = null;
+
+        for (ClienteEntity cliente: listaCliente){
+            if (nome.equals(cliente.getNome())){
+                if (senha.equals(cliente.getSenha())){
+                    retorno = cliente.getLogin();
+                    break;
+                }
+            }
+        }
+        return retorno;
+    }
 }

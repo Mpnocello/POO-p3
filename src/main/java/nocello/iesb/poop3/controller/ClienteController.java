@@ -1,15 +1,15 @@
 package nocello.iesb.poop3.controller;
 
 import nocello.iesb.poop3.dto.ClienteDTO;
-import nocello.iesb.poop3.dto.ProdutoDTO;
 import nocello.iesb.poop3.service.ClienteService;
-import nocello.iesb.poop3.service.ProdutoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
 
 import java.util.List;
 
@@ -48,5 +48,19 @@ public class ClienteController {
     public List<ClienteDTO> mostraCliente(){
         List<ClienteDTO> novo = serv.mostraCliente();
         return novo;
+    }
+
+    @PostMapping("/login-cliente")
+    public ResponseEntity<String> loginCliente(@RequestBody ClienteDTO resgistrado){
+
+        String token = serv.login(resgistrado.getNome(), resgistrado.getSenha());
+        if (token!=null){
+            HttpHeaders headers = new HttpHeaders();
+
+            headers.add("Authorization",token);
+
+            return ResponseEntity.ok().headers(headers).build();
+        }
+        return ResponseEntity.notFound().build();
     }
 }
