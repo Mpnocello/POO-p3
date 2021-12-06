@@ -9,8 +9,10 @@ public class ClienteEntity {
     private String telefoneCelular;
     private String email;
     private String login;
+    private Endereço endereço;
+    private String senha;
 
-    public ClienteEntity(String nome, String cpf, String telefoneResidencial, String telefoneComercial, String telefoneCelular, String email, String login) {
+    public ClienteEntity(String nome, String cpf, String telefoneResidencial, String telefoneComercial, String telefoneCelular, String email, String login, Endereço endereço, String senha){
         this.nome = nome;
         this.cpf = cpf;
         this.telefoneResidencial = telefoneResidencial;
@@ -18,6 +20,8 @@ public class ClienteEntity {
         this.telefoneCelular = telefoneCelular;
         this.email = email;
         this.login = login;
+        this.endereço = endereço;
+        this.senha = senha;
     }
 
     public String getNome() {
@@ -74,5 +78,21 @@ public class ClienteEntity {
 
     public void setLogin(String login) {
         this.login = login;
+    }
+
+    public Endereço getEndereço() {
+        return endereço;
+    }
+
+    public void setEndereço(Endereço endereço) {
+        this.endereço = endereço;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 }
