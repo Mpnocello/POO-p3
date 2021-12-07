@@ -64,6 +64,15 @@ public class ProdutoRepository {
         }
         return false;
     }
+
+    public ProdutoEntity procuraProduto(String nome){
+        for (ProdutoEntity p:listaProdutos){
+            if (p.getNome().equals(nome)){
+                return p;
+            }
+        }
+        return null;
+    }
 }
 
 class Comprados{

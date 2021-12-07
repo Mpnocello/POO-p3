@@ -31,7 +31,7 @@ public class ClienteController {
             case 1:
                 return ResponseEntity.badRequest().body("Nome errado");
             case 2:
-                return ResponseEntity.badRequest().body("Cpf invalido");
+                return ResponseEntity.badRequest().body("Cpf invalido (certifique-se de colocar . e -)");
             case 3:
                 return ResponseEntity.badRequest().body("Telefone Residencial invalido");
             case 4:

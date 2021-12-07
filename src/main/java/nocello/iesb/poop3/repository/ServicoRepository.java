@@ -64,6 +64,15 @@ public class ServicoRepository {
         }
         return false;
     }
+
+    public ServicoEntity procuraServico(String nome){
+        for (ServicoEntity s:listaServicos){
+            if (s.getNome().equals(nome)){
+                return s;
+            }
+        }
+        return null;
+    }
 }
 
 class Adquiridos{
