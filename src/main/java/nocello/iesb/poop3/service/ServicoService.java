@@ -1,9 +1,8 @@
 package nocello.iesb.poop3.service;
 
-import nocello.iesb.poop3.dto.ProdutoDTO;
 import nocello.iesb.poop3.dto.ServicoDTO;
 import nocello.iesb.poop3.model.ServicoEntity;
-import nocello.iesb.poop3.model.ServicoEntityBuilder;
+import nocello.iesb.poop3.model.builders.ServicoEntityBuilder;
 import nocello.iesb.poop3.repository.ServicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

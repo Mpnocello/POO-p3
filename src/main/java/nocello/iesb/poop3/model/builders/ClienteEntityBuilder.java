@@ -1,4 +1,7 @@
-package nocello.iesb.poop3.model;
+package nocello.iesb.poop3.model.builders;
+
+import nocello.iesb.poop3.model.ClienteEntity;
+import nocello.iesb.poop3.model.Endereço;
 
 public class ClienteEntityBuilder {
 

@@ -1,4 +1,6 @@
-package nocello.iesb.poop3.model;
+package nocello.iesb.poop3.model.builders;
+
+import nocello.iesb.poop3.model.ServicoEntity;
 
 public class ServicoEntityBuilder {
 

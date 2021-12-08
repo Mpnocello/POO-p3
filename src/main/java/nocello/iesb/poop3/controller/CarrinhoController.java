@@ -2,13 +2,11 @@ package nocello.iesb.poop3.controller;
 
 
 import nocello.iesb.poop3.dto.CarrinhoDTO;
+import nocello.iesb.poop3.dto.CarrinhoResponse;
 import nocello.iesb.poop3.service.CarrinhoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -33,10 +31,58 @@ public class CarrinhoController {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/mostrar-carrinho")
-    public List<CarrinhoDTO> mostraCarrinho(){
-        List<CarrinhoDTO> novo = serv.mostraCarrinho();
+    @GetMapping("/mostra-carrinho")
+    public CarrinhoResponse mostraCarrinho(@RequestParam(required = false) String desconto){
 
-        return novo;
+        CarrinhoResponse carrinho = new CarrinhoResponse();
+
+        List<CarrinhoDTO> novo = serv.mostraCarrinho();
+        carrinho.setLista(novo);
+
+
+        if (desconto==null){
+            carrinho.setPreco(serv.calculaPreco());
+
+        }else {
+            carrinho.setPreco(serv.calculaPreco()*Float.parseFloat(desconto));
+        }
+        return carrinho;
+    }
+
+    @DeleteMapping("/limpar-carrinho")
+    public ResponseEntity<String> limparCarrinho(){
+
+        int retorno = serv.limparCarrinho();
+
+        if (retorno==1){
+            return ResponseEntity.badRequest().body("Carrinho já esta vazio");
+        }
+
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping("/deletar-item")
+    public ResponseEntity<String> deletarItem(@RequestBody CarrinhoDTO item){
+
+        int retorno = serv.deletarItem(item);
+
+        if (retorno==1){
+            return ResponseEntity.badRequest().body("Item não encontrado");
+        }
+        return ResponseEntity.ok().build();
+    }
+
+    @PutMapping("/alterar-item")
+    public ResponseEntity<String> alterarItem(@RequestBody CarrinhoDTO item){
+
+        int atualizar;
+        atualizar = serv.alterarItem(item);
+
+        switch (atualizar){
+            case 1:
+                return ResponseEntity.badRequest().body("Produto ou serviço nao encontrado");
+
+        }
+        return ResponseEntity.ok().build();
     }
 }

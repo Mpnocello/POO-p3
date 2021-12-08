@@ -2,7 +2,7 @@ package nocello.iesb.poop3.service;
 
 import nocello.iesb.poop3.dto.ProdutoDTO;
 import nocello.iesb.poop3.model.ProdutoEntity;
-import nocello.iesb.poop3.model.ProdutoEntityBuilder;
+import nocello.iesb.poop3.model.builders.ProdutoEntityBuilder;
 import nocello.iesb.poop3.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

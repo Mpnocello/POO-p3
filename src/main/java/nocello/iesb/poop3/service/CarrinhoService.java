@@ -24,4 +24,32 @@ public class CarrinhoService {
 
         return repo.mostraCarrinho();
     }
+
+    public int limparCarrinho(){
+
+        int retorno = repo.limparCarrinho();
+
+        return retorno;
+    }
+
+    public int deletarItem(CarrinhoDTO item){
+
+        int retorno = repo.deletarItem(item);
+
+        return retorno;
+    }
+
+    public int alterarItem(CarrinhoDTO item){
+
+        int retorno = repo.alterarItem(item);
+
+        return retorno;
+    }
+
+    public float calculaPreco(){
+
+        return repo.calculaPreco();
+    }
 }
+
+
