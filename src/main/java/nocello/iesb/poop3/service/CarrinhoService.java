@@ -2,11 +2,13 @@ package nocello.iesb.poop3.service;
 
 
 import nocello.iesb.poop3.dto.CarrinhoDTO;
+import nocello.iesb.poop3.dto.CarrinhoResponse;
 import nocello.iesb.poop3.repository.CarrinhoRepository;
 import nocello.iesb.poop3.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -46,9 +48,16 @@ public class CarrinhoService {
         return retorno;
     }
 
-    public float calculaPreco(){
+    public float calculaPreco(String desconto){
 
-        return repo.calculaPreco();
+        if (desconto==null){
+            return repo.calculaPreco();
+        }
+        float valor = Float.parseFloat(desconto);
+        if (valor>1||valor<=0){
+            return -1;
+        }
+        return repo.calculaPreco()*valor;
     }
 }
 

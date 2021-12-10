@@ -13,6 +13,16 @@ public class ClienteRepository {
 
     private List<ClienteEntity> listaCliente = new ArrayList<>();
 
+    private String loginId = null;
+
+    public String getLoginId() {
+        return loginId;
+    }
+
+    public void setLoginId(String loginId) {
+        this.loginId = loginId;
+    }
+
     public void adicionar(ClienteEntity novo){
         listaCliente.add(novo);
     }
@@ -28,10 +38,31 @@ public class ClienteRepository {
             if (nome.equals(cliente.getNome())){
                 if (senha.equals(cliente.getSenha())){
                     retorno = cliente.getLogin();
+                    setLoginId(cliente.getLogin());
                     break;
+                }else {
+                    setLoginId(null);
                 }
             }
         }
         return retorno;
+    }
+
+    public boolean estaLogado(){
+
+        if (getLoginId()==null){
+            return false;
+        }
+        return true;
+    }
+
+    public ClienteEntity retornaCliente(String id){
+        for (ClienteEntity cliente: listaCliente){
+            if (cliente.getLogin().equals(id)){
+
+                return cliente;
+            }
+        }
+        return null;
     }
 }

@@ -32,21 +32,21 @@ public class CarrinhoController {
     }
 
     @GetMapping("/mostra-carrinho")
-    public CarrinhoResponse mostraCarrinho(@RequestParam(required = false) String desconto){
+    public ResponseEntity<CarrinhoResponse> mostraCarrinho(@RequestParam(required = false) String desconto){
 
         CarrinhoResponse carrinho = new CarrinhoResponse();
-
         List<CarrinhoDTO> novo = serv.mostraCarrinho();
         carrinho.setLista(novo);
 
+        float preco = serv.calculaPreco(desconto);
 
-        if (desconto==null){
-            carrinho.setPreco(serv.calculaPreco());
-
-        }else {
-            carrinho.setPreco(serv.calculaPreco()*Float.parseFloat(desconto));
+        if (preco==-1){
+            return ResponseEntity.notFound().build();
         }
-        return carrinho;
+
+        carrinho.setPreco(preco);
+
+        return ResponseEntity.ok().body(carrinho);
     }
 
     @DeleteMapping("/limpar-carrinho")

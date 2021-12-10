@@ -1,7 +1,7 @@
 package nocello.iesb.poop3.model.builders;
 
 import nocello.iesb.poop3.model.ClienteEntity;
-import nocello.iesb.poop3.model.Endereço;
+import nocello.iesb.poop3.model.Endereco;
 
 public class ClienteEntityBuilder {
 
@@ -12,7 +12,7 @@ public class ClienteEntityBuilder {
     private String telefoneCelular;
     private String email;
     private String login;
-    private Endereço endereço;
+    private Endereco endereco;
     private String senha;
 
     public ClienteEntityBuilder withNome(String nome){
@@ -50,8 +50,8 @@ public class ClienteEntityBuilder {
         return this;
     }
 
-    public ClienteEntityBuilder withEndereço(Endereço endereço){
-        this.endereço = endereço;
+    public ClienteEntityBuilder withEndereco(Endereco endereco){
+        this.endereco = endereco;
         return this;
     }
 
@@ -61,6 +61,6 @@ public class ClienteEntityBuilder {
     }
 
     public ClienteEntity build(){
-        return new ClienteEntity(nome, cpf, telefoneResidencial, telefoneComercial, telefoneCelular, email, login, endereço, senha);
+        return new ClienteEntity(nome, cpf, telefoneResidencial, telefoneComercial, telefoneCelular, email, login, endereco, senha);
     }
 }

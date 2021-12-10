@@ -68,7 +68,7 @@ public class ClienteService {
                 .withTelefoneCelular(cliente.getTelefoneCelular())
                 .withEmail(cliente.getEmail())
                 .withLogin(UUID.randomUUID().toString())
-                .withEndereço(cliente.getEndereço())
+                .withEndereco(cliente.getEndereco())
                 .withSenha(cliente.getSenha())
                 .build();
 
@@ -83,7 +83,7 @@ public class ClienteService {
         for (ClienteEntity cliente:clienteEntities){
             clienteDTOS.add(new ClienteDTO(cliente.getNome(),cliente.getCpf(),cliente.getTelefoneResidencial()
                     ,cliente.getTelefoneComercial(), cliente.getTelefoneCelular(), cliente.getEmail(),
-                    new Endereço(cliente.getEndereço().getResidencial(),cliente.getEndereço().getComercial()),
+                    new Endereco(cliente.getEndereco().getResidencial(),cliente.getEndereco().getComercial()),
                     null));
         }
         return clienteDTOS;

@@ -1,11 +1,14 @@
 package nocello.iesb.poop3.model;
 
-public class Endereço {
+public class Endereco {
 
     private String residencial;
     private String comercial;
 
-    public Endereço(String residencial, String comercial) {
+    public Endereco() {
+    }
+
+    public Endereco(String residencial, String comercial) {
         this.residencial = residencial;
         this.comercial = comercial;
     }

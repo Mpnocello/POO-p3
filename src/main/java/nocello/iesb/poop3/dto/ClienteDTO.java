@@ -1,6 +1,6 @@
 package nocello.iesb.poop3.dto;
 
-import nocello.iesb.poop3.model.Endereço;
+import nocello.iesb.poop3.model.Endereco;
 
 public class ClienteDTO {
 
@@ -10,17 +10,17 @@ public class ClienteDTO {
     private String telefoneComercial;
     private String telefoneCelular;
     private String email;
-    private Endereço endereço;
+    private Endereco endereco;
     private String senha;
 
-    public ClienteDTO(String nome, String cpf, String telefoneResidencial, String telefoneComercial, String telefoneCelular, String email, Endereço endereço, String senha) {
+    public ClienteDTO(String nome, String cpf, String telefoneResidencial, String telefoneComercial, String telefoneCelular, String email, Endereco endereço, String senha) {
         this.nome = nome;
         this.cpf = cpf;
         this.telefoneResidencial = telefoneResidencial;
         this.telefoneComercial = telefoneComercial;
         this.telefoneCelular = telefoneCelular;
         this.email = email;
-        this.endereço = endereço;
+        this.endereco = endereço;
         this.senha = senha;
     }
 
@@ -72,12 +72,12 @@ public class ClienteDTO {
         this.email = email;
     }
 
-    public Endereço getEndereço() {
-        return endereço;
+    public Endereco getEndereco() {
+        return endereco;
     }
 
-    public void setEndereço(Endereço endereço) {
-        this.endereço = endereço;
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 
     public String getSenha() {

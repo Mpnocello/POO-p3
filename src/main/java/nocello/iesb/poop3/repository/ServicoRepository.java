@@ -17,7 +17,7 @@ public class ServicoRepository {
     public void adicionar(ServicoEntity novo){
 
         for (ServicoEntity s:listaServicos){
-            if (s.getNome().equals(s.getNome())){
+            if (s.getNome().equals(novo.getNome())){
                 int i = listaServicos.indexOf(s);
                 listaServicos.set(i,novo);
                 return;

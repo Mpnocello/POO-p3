@@ -17,7 +17,7 @@ public class ProdutoRepository {
     public void adicionar(ProdutoEntity novo){
 
         for (ProdutoEntity p:listaProdutos){
-            if (p.getNome().equals(p.getNome())){
+            if (p.getNome().equals(novo.getNome())){
                 int i = listaProdutos.indexOf(p);
                 listaProdutos.set(i,novo);
                 return;
@@ -34,6 +34,14 @@ public class ProdutoRepository {
             }
         }
         return null;
+    }
+
+    public float retornaPrecoProduto(String nome){
+
+        if (procuraPorNome(nome)!=null){
+            return procuraPorNome(nome).getPreco();
+        }
+        return 0;
     }
 
     public List<ProdutoEntity> retornaProduto(){

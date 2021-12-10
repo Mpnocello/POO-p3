@@ -9,10 +9,13 @@ public class ClienteEntity {
     private String telefoneCelular;
     private String email;
     private String login;
-    private Endereço endereço;
+    private Endereco endereco;
     private String senha;
 
-    public ClienteEntity(String nome, String cpf, String telefoneResidencial, String telefoneComercial, String telefoneCelular, String email, String login, Endereço endereço, String senha){
+    public ClienteEntity() {
+    }
+
+    public ClienteEntity(String nome, String cpf, String telefoneResidencial, String telefoneComercial, String telefoneCelular, String email, String login, Endereco endereco, String senha){
         this.nome = nome;
         this.cpf = cpf;
         this.telefoneResidencial = telefoneResidencial;
@@ -20,7 +23,7 @@ public class ClienteEntity {
         this.telefoneCelular = telefoneCelular;
         this.email = email;
         this.login = login;
-        this.endereço = endereço;
+        this.endereco = endereco;
         this.senha = senha;
     }
 
@@ -80,12 +83,12 @@ public class ClienteEntity {
         this.login = login;
     }
 
-    public Endereço getEndereço() {
-        return endereço;
+    public Endereco getEndereco() {
+        return endereco;
     }
 
-    public void setEndereço(Endereço endereço) {
-        this.endereço = endereço;
+    public void setEndereco(Endereco endereço) {
+        this.endereco = endereço;
     }
 
     public String getSenha() {
