@@ -24,22 +24,20 @@ public class FinalizarRepository {
     @Autowired
     private CarrinhoRepository repoCarrinho;
 
-    private DadosCompra dadosCompra = new DadosCompra();
+    private DadosCompra dadosCompra;
 
 
-    public int adicionar(DadosPagamentoDTO dados){//botei debug aqui ve se pareceu ai
+    public int adicionar(DadosPagamentoDTO dados){
 
         if (!repoCliente.estaLogado()){
             return 1;
-            //usuario nao esta logado
+
         }
 
         ClienteEntity cliente = repoCliente.retornaCliente(repoCliente.getLoginId());
         ClienteDTO clienteDTOS = new ClienteDTO(cliente.getNome(), cliente.getCpf(), cliente.getTelefoneResidencial(), cliente.getTelefoneComercial(),
                 cliente.getTelefoneCelular(), cliente.getEmail(), cliente.getEndereco(), cliente.getSenha());
 
-        dadosCompra.setDados(dados);
-        dadosCompra.setCliente(clienteDTOS);
 
         /*List<CarrinhoDTO> carrinhoDTOList = repoCarrinho.mostraCarrinho();
         CarrinhoResponse carrinhoResponse = new CarrinhoResponse();
@@ -59,8 +57,8 @@ public class FinalizarRepository {
         }
 
         //carrinhoResponse.setPreco(preco);
-        dadosCompra.setLista(repoCarrinho.mostraCarrinho());
-        dadosCompra.setValorTotal(preco);
+
+        dadosCompra = new DadosCompra(clienteDTOS, repoCarrinho.mostraCarrinho(), dados, preco);
 
         return 0;
     }
@@ -74,7 +72,7 @@ public class FinalizarRepository {
         if (repoCliente.estaLogado()){
             repoCarrinho.alteraVendidos();
             repoCarrinho.limparCarrinho();
-            //Todo alterar a quatindade de itens e adicionar na lista de comprados
+            dadosCompra = null;
 
             return 0;
         }
