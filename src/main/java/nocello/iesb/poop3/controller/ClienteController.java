@@ -41,6 +41,8 @@ public class ClienteController {
             case 6:
                 return ResponseEntity.badRequest().body("Email invalido");
             case 7:
+                return ResponseEntity.badRequest().body("Senha invalida(8 caracteres, 1 numero, maiuscula e minuscula, carcater especial)");
+            case 8:
                 return ResponseEntity.badRequest().body("Cliente ja existente");
         }
         return ResponseEntity.ok().build();

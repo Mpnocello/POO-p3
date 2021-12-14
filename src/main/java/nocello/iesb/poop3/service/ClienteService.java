@@ -60,6 +60,13 @@ public class ClienteService {
             return 6;
         }
 
+        pattern = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$", Pattern.CASE_INSENSITIVE); //8 caracteres, um numero maiuscula e minuscula e carac especial
+        matcher = pattern.matcher(cliente.getSenha());
+
+        if (!matcher.matches()) {
+            return 7;
+        }
+
         ClienteEntity novo = new ClienteEntityBuilder()
                 .withNome(cliente.getNome())
                 .withCpf(cliente.getCpf())
@@ -73,7 +80,7 @@ public class ClienteService {
                 .build();
 
         if(repo.adicionar(novo) == 1){
-            return 7; //usuario ja existe
+            return 8; //
         }
         return 0;
     }
