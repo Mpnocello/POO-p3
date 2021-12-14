@@ -10,9 +10,20 @@ public class ProdutoEntityBuilder {
     private float preco;
     private int qtd;
 
+
+    private static final ProdutoEntityBuilder instancia = new ProdutoEntityBuilder();
+
+    public static ProdutoEntityBuilder getInstance(){
+        return instancia;
+    }
+
+    private ProdutoEntityBuilder(){
+    }
+
     public ProdutoEntityBuilder withNome(String nome){
         this.nome = nome;
         return this;
+
     }
 
     public ProdutoEntityBuilder withDescricao(String descricao){

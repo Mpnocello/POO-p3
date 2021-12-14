@@ -11,6 +11,15 @@ public class ServicoEntityBuilder {
     private int vagas;
     private String animal;
 
+    private static final ServicoEntityBuilder instancia = new ServicoEntityBuilder();
+
+    public static ServicoEntityBuilder getInstance(){
+        return instancia;
+    }
+
+    private ServicoEntityBuilder(){
+    }
+
     public ServicoEntityBuilder withNome(String nome){
         this.nome = nome;
         return this;

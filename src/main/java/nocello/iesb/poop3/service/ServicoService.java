@@ -38,8 +38,8 @@ public class ServicoService {
             return 5;
         }
 
-        ServicoEntity novo = new ServicoEntityBuilder()
-                .withNome(servico.getNome())
+        ServicoEntityBuilder instancia = ServicoEntityBuilder.getInstance();
+                instancia.withNome(servico.getNome())
                 .withDescricao(servico.getDescricao())
                 .withPreco(servico.getPreco())
                 .withVagas(servico.getVagas())
@@ -47,7 +47,7 @@ public class ServicoService {
                 .withId(UUID.randomUUID().toString())
                 .build();
 
-        repo.adicionar(novo);
+        repo.adicionar(instancia.build());
         return 0;
     }
 

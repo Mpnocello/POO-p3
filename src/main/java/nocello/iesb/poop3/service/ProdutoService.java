@@ -34,15 +34,15 @@ public class ProdutoService {
             return 4;
         }
 
-        ProdutoEntity novo = new ProdutoEntityBuilder()
-                .withNome(produto.getNome())
+        ProdutoEntityBuilder instancia = ProdutoEntityBuilder.getInstance();
+                instancia.withNome(produto.getNome())
                 .witPreco(produto.getPreco())
                 .withDescricao(produto.getDescricao())
                 .withQtd(produto.getQtd())
                 .withId(UUID.randomUUID().toString())
                 .build();
 
-        repo.adicionar(novo);
+        repo.adicionar(instancia.build());
         return 0;
     }
 

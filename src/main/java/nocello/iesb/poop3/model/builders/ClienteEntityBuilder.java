@@ -15,6 +15,12 @@ public class ClienteEntityBuilder {
     private Endereco endereco;
     private String senha;
 
+    private static final ClienteEntityBuilder instancia = new ClienteEntityBuilder();
+
+    public static ClienteEntityBuilder getInstance(){
+        return instancia;
+    }
+
     public ClienteEntityBuilder withNome(String nome){
         this.nome = nome;
         return this;
