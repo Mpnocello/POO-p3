@@ -8,6 +8,8 @@ public class ServicoDTO {
     private int vagas;
     private String animal;
 
+    public ServicoDTO (){}
+
     public ServicoDTO(String nome, String descricao, float preco, int vagas, String animal) {
         this.nome = nome;
         this.descricao = descricao;

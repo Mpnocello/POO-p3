@@ -42,7 +42,7 @@ public class ServicoEntityBuilder {
     }
 
     public ServicoEntity build(){
-        return new ServicoEntity(null,nome, descricao, preco, vagas, animal);
+        return new ServicoEntity(nome, descricao, preco, vagas, animal, id);
     }
 
 }

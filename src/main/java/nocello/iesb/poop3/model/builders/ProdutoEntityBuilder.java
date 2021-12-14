@@ -36,7 +36,7 @@ public class ProdutoEntityBuilder {
     }
 
     public ProdutoEntity build(){
-        return new ProdutoEntity(null,nome, descricao, preco, qtd);
+        return new ProdutoEntity(nome,descricao,preco,qtd, id);
     }
 
 }

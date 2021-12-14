@@ -27,7 +27,7 @@ public class FinalizarRepository {
     private DadosCompra dadosCompra = new DadosCompra();
 
 
-    public int adicionar(DadosPagamentoDTO dados){
+    public int adicionar(DadosPagamentoDTO dados){//botei debug aqui ve se pareceu ai
 
         if (!repoCliente.estaLogado()){
             return 1;
@@ -41,21 +41,25 @@ public class FinalizarRepository {
         dadosCompra.setDados(dados);
         dadosCompra.setCliente(clienteDTOS);
 
-
-        List<CarrinhoDTO> carrinhoDTOList = repoCarrinho.mostraCarrinho();
+        /*List<CarrinhoDTO> carrinhoDTOList = repoCarrinho.mostraCarrinho();
         CarrinhoResponse carrinhoResponse = new CarrinhoResponse();
 
-        carrinhoResponse.setLista(carrinhoDTOList);
+        carrinhoResponse.setLista(carrinhoDTOList);*/
 
         float preco = 0;
 
-        for (CarrinhoDTO c:carrinhoDTOList){
+        for (CarrinhoDTO c: repoCarrinho.mostraCarrinho()){
 
-            preco+=(c.getQtd()*repoProduto.retornaPrecoProduto(c.getNome()));
+            if (c.isProduto()){
+                preco+=(c.getQtd()*repoProduto.retornaPrecoProduto(c.getNome()));
+            }else{
+                preco+=(c.getQtd()*repoServico.retornaPrecoServico(c.getNome()));
+            }
 
         }
-        carrinhoResponse.setPreco(preco);
-        dadosCompra.setLista(carrinhoResponse);
+
+        //carrinhoResponse.setPreco(preco);
+        dadosCompra.setLista(repoCarrinho.mostraCarrinho());
         dadosCompra.setValorTotal(preco);
 
         return 0;
@@ -68,6 +72,7 @@ public class FinalizarRepository {
     public int fecharCompra(){
 
         if (repoCliente.estaLogado()){
+            repoCarrinho.alteraVendidos();
             repoCarrinho.limparCarrinho();
             //Todo alterar a quatindade de itens e adicionar na lista de comprados
 

@@ -13,6 +13,9 @@ public class ClienteDTO {
     private Endereco endereco;
     private String senha;
 
+    public ClienteDTO(){
+    }
+
     public ClienteDTO(String nome, String cpf, String telefoneResidencial, String telefoneComercial, String telefoneCelular, String email, Endereco endereço, String senha) {
         this.nome = nome;
         this.cpf = cpf;

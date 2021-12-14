@@ -5,14 +5,15 @@ import java.util.List;
 public class DadosCompra {
 
     private ClienteDTO cliente;
-    private CarrinhoResponse lista;
+    private List<CarrinhoDTO> lista;
     private DadosPagamentoDTO dados;
     private float valorTotal;
 
     public DadosCompra() {
     }
 
-    public DadosCompra(ClienteDTO cliente, CarrinhoResponse lista, DadosPagamentoDTO dados, float valorTotal) {
+    public DadosCompra(ClienteDTO cliente, List<CarrinhoDTO> lista,
+                       DadosPagamentoDTO dados, float valorTotal) {
         this.cliente = cliente;
         this.lista = lista;
         this.dados = dados;
@@ -27,11 +28,11 @@ public class DadosCompra {
         this.cliente = cliente;
     }
 
-    public CarrinhoResponse getLista() {
+    public List<CarrinhoDTO> getLista() {
         return lista;
     }
 
-    public void setLista(CarrinhoResponse lista) {
+    public void setLista(List<CarrinhoDTO> lista) {
         this.lista = lista;
     }
 

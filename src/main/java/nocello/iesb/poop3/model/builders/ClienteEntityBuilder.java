@@ -61,6 +61,10 @@ public class ClienteEntityBuilder {
     }
 
     public ClienteEntity build(){
-        return new ClienteEntity(nome, cpf, telefoneResidencial, telefoneComercial, telefoneCelular, email, login, endereco, senha);
+        return new ClienteEntity(nome, cpf, telefoneResidencial, telefoneComercial,
+                telefoneCelular, email, endereco, senha, login);
+
     }
 }
+
+

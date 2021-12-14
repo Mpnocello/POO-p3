@@ -23,8 +23,14 @@ public class ClienteRepository {
         this.loginId = loginId;
     }
 
-    public void adicionar(ClienteEntity novo){
+    public int adicionar(ClienteEntity novo){
+        for(ClienteEntity c: listaCliente){
+            if(c.getNome().equals(novo.getNome())){
+                return 1;//usuario ja existe
+            }
+        }
         listaCliente.add(novo);
+        return 0;
     }
 
     public List<ClienteEntity> retornaCliente(){

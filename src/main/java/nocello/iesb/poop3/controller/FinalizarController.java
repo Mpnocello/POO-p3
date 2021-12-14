@@ -22,8 +22,23 @@ public class FinalizarController {
 
         int retorno = serv.mandaDados(dados);
 
+        switch (retorno){
+            case 1:
+                return ResponseEntity.badRequest().body("Numero do cartao invalido");
+            case 2:
+                return ResponseEntity.badRequest().body("Nome invalido");
+            case 3:
+                return ResponseEntity.badRequest().body("Data invalida");
+            case 4:
+                return ResponseEntity.badRequest().body("CVV invalido");
+            case 5:
+                return ResponseEntity.badRequest().body("Endereço de cobrança invalido");
+            case 6:
+                return ResponseEntity.badRequest().body("Endereço de entrega invalido");
+        }
         return ResponseEntity.ok().build();
     }
+
 
     @GetMapping("/mostra-dados")
     public DadosCompra mostraDados(){

@@ -72,7 +72,9 @@ public class ClienteService {
                 .withSenha(cliente.getSenha())
                 .build();
 
-        repo.adicionar(novo);
+        if(repo.adicionar(novo) == 1){
+            return 7; //usuario ja existe
+        }
         return 0;
     }
 
@@ -91,7 +93,7 @@ public class ClienteService {
 
     public String login(String nome, String senha){
 
-        String retorno = repo.login(nome, senha);
+        String retorno = repo.login(nome, senha);//debuga essa linha
 
         return retorno;
     }

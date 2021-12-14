@@ -1,78 +1,31 @@
 package nocello.iesb.poop3.model;
 
-public class ClienteEntity {
+import nocello.iesb.poop3.dto.ClienteDTO;
 
-    private String nome;
-    private String cpf;
-    private String telefoneResidencial;
-    private String telefoneComercial;
-    private String telefoneCelular;
-    private String email;
+public class ClienteEntity extends ClienteDTO {
+
     private String login;
-    private Endereco endereco;
-    private String senha;
 
     public ClienteEntity() {
     }
 
-    public ClienteEntity(String nome, String cpf, String telefoneResidencial, String telefoneComercial, String telefoneCelular, String email, String login, Endereco endereco, String senha){
-        this.nome = nome;
-        this.cpf = cpf;
-        this.telefoneResidencial = telefoneResidencial;
-        this.telefoneComercial = telefoneComercial;
-        this.telefoneCelular = telefoneCelular;
-        this.email = email;
+
+    //todo: tira esse construtor e botar outro com tudo
+
+
+    public ClienteEntity(String nome, String cpf, String telefoneResidencial, String telefoneComercial,
+                         String telefoneCelular, String email, Endereco endereço,
+                         String senha, String login) {
+        super(nome, cpf, telefoneResidencial, telefoneComercial, telefoneCelular, email, endereço, senha);
         this.login = login;
-        this.endereco = endereco;
-        this.senha = senha;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public String getTelefoneResidencial() {
-        return telefoneResidencial;
-    }
-
-    public void setTelefoneResidencial(String telefoneResidencial) {
-        this.telefoneResidencial = telefoneResidencial;
-    }
-
-    public String getTelefoneComercial() {
-        return telefoneComercial;
-    }
-
-    public void setTelefoneComercial(String telefoneComercial) {
-        this.telefoneComercial = telefoneComercial;
-    }
-
-    public String getTelefoneCelular() {
-        return telefoneCelular;
-    }
-
-    public void setTelefoneCelular(String telefoneCelular) {
-        this.telefoneCelular = telefoneCelular;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+        this.getNome();
+        this.getCpf();
+        this.getTelefoneResidencial();
+        this.getTelefoneComercial();
+        this.getTelefoneCelular();
+        this.getEmail();
+        this.getEndereco();
+        this.getSenha();
     }
 
     public String getLogin() {
@@ -81,21 +34,5 @@ public class ClienteEntity {
 
     public void setLogin(String login) {
         this.login = login;
-    }
-
-    public Endereco getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(Endereco endereço) {
-        this.endereco = endereço;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
     }
 }

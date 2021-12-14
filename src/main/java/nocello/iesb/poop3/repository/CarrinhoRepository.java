@@ -136,4 +136,16 @@ public class CarrinhoRepository {
         }
         return preco;
     }
+
+    public void alteraVendidos(){
+
+        for(CarrinhoDTO c:listaCarrinho){
+            if(c.isProduto()){
+                produtoRepository.atualizaVendido(c.getNome(), c.getQtd());
+            }else{
+                servicoRepository.atualizaAdquirido(c.getNome(), c.getQtd());
+            }
+        }
+
+    }
 }

@@ -1,6 +1,5 @@
 package nocello.iesb.poop3.repository;
 
-import nocello.iesb.poop3.model.ProdutoEntity;
 import nocello.iesb.poop3.model.ServicoEntity;
 import org.springframework.stereotype.Repository;
 
@@ -14,30 +13,38 @@ public class ServicoRepository {
 
     private List<Adquiridos> adquirido = new ArrayList<>();
 
-    public void adicionar(ServicoEntity novo){
+    public void adicionar(ServicoEntity novo) {
 
-        for (ServicoEntity s:listaServicos){
-            if (s.getNome().equals(novo.getNome())){
+        for (ServicoEntity s : listaServicos) {
+            if (s.getNome().equals(novo.getNome())) {
                 int i = listaServicos.indexOf(s);
-                listaServicos.set(i,novo);
+                listaServicos.set(i, novo);
                 return;
             }
         }
         listaServicos.add(novo);
-        adquirido.add(new Adquiridos(novo.getNome(),0));
-    }
-
-    public ServicoEntity procuraPorNome(String nome){
-        for (ServicoEntity s:listaServicos){
-            if (s.getNome().equals(nome)){
-                return s;
-            }
-        }
-        return null;
+        adquirido.add(new Adquiridos(novo.getNome(), 0));
     }
 
     public List<ServicoEntity> retornaServico(){
         return listaServicos;
+    }
+
+    public float retornaPrecoServico(String nome){
+
+        if (procuraPorNome(nome)!=null){
+            return procuraPorNome(nome).getPreco();
+        }
+        return 0;
+    }
+
+    public ServicoEntity procuraPorNome(String nome){
+        for(ServicoEntity s: listaServicos){
+            if(s.getNome().equals(nome)){
+                return s;
+            }
+        }
+        return null;
     }
 
     public int delete(String nome){
@@ -73,6 +80,16 @@ public class ServicoRepository {
         }
         return null;
     }
+
+    public void atualizaAdquirido(String nome , int qtd){
+        for(ServicoEntity s: listaServicos){
+            if(s.getNome().equals(nome)){
+                s.setVagas(s.getVagas() - qtd);
+                adquirido.add(new Adquiridos(nome, qtd));
+            }
+        }
+    }
+
 }
 
 class Adquiridos{

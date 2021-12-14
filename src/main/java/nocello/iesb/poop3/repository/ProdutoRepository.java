@@ -73,6 +73,15 @@ public class ProdutoRepository {
         return false;
     }
 
+    public void atualizaVendido(String nome , int qtd){
+        for(ProdutoEntity p: listaProdutos){
+            if(p.getNome().equals(nome)){
+                p.setQtd(p.getQtd() - qtd);
+                comprados.add(new Comprados(nome, qtd));
+            }
+        }
+    }
+
     public ProdutoEntity procuraProduto(String nome){
         for (ProdutoEntity p:listaProdutos){
             if (p.getNome().equals(nome)){

@@ -40,6 +40,8 @@ public class ClienteController {
                 return ResponseEntity.badRequest().body("Telefone Celular invalido");
             case 6:
                 return ResponseEntity.badRequest().body("Email invalido");
+            case 7:
+                return ResponseEntity.badRequest().body("Cliente ja existente");
         }
         return ResponseEntity.ok().build();
     }
