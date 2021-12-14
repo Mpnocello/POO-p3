@@ -39,11 +39,6 @@ public class FinalizarRepository {
                 cliente.getTelefoneCelular(), cliente.getEmail(), cliente.getEndereco(), cliente.getSenha());
 
 
-        /*List<CarrinhoDTO> carrinhoDTOList = repoCarrinho.mostraCarrinho();
-        CarrinhoResponse carrinhoResponse = new CarrinhoResponse();
-
-        carrinhoResponse.setLista(carrinhoDTOList);*/
-
         float preco = 0;
 
         for (CarrinhoDTO c: repoCarrinho.mostraCarrinho()){
@@ -55,8 +50,6 @@ public class FinalizarRepository {
             }
 
         }
-
-        //carrinhoResponse.setPreco(preco);
 
         dadosCompra = new DadosCompra(clienteDTOS, repoCarrinho.mostraCarrinho(), dados, preco);
 
