@@ -60,7 +60,7 @@ public class ClienteService {
             return 6;
         }
 
-        pattern = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$", Pattern.CASE_INSENSITIVE); //8 caracteres, um numero maiuscula e minuscula e carac especial
+        pattern = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$", Pattern.CASE_INSENSITIVE);
         matcher = pattern.matcher(cliente.getSenha());
 
         if (!matcher.matches()) {
@@ -100,7 +100,7 @@ public class ClienteService {
 
     public String login(String nome, String senha){
 
-        String retorno = repo.login(nome, senha);//debuga essa linha
+        String retorno = repo.login(nome, senha);
 
         return retorno;
     }

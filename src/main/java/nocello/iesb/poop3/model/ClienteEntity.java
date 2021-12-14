@@ -10,9 +10,6 @@ public class ClienteEntity extends ClienteDTO {
     }
 
 
-    //todo: tira esse construtor e botar outro com tudo
-
-
     public ClienteEntity(String nome, String cpf, String telefoneResidencial, String telefoneComercial,
                          String telefoneCelular, String email, Endereco endereço,
                          String senha, String login) {

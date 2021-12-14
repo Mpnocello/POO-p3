@@ -10,9 +10,6 @@ public class ServicoEntity extends ServicoDTO {
     public ServicoEntity(){
     }
 
-    //todo: tirar esse construtor e botar outro com tudo
-
-
     public ServicoEntity(String nome, String descricao, float preco, int vagas, String animal, String id) {
         super(nome, descricao, preco, vagas, animal);
         this.id = id;
