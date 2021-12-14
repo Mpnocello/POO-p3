@@ -64,6 +64,19 @@ public class FinalizarRepository {
     }
 
     public DadosCompra getDadosCompra() {
+
+        float preco = 0;
+
+        for (CarrinhoDTO c: repoCarrinho.mostraCarrinho()){
+
+            if (c.isProduto()){
+                preco+=(c.getQtd()*repoProduto.retornaPrecoProduto(c.getNome()));
+            }else{
+                preco+=(c.getQtd()*repoServico.retornaPrecoServico(c.getNome()));
+            }
+
+        }
+        dadosCompra.setValorTotal(preco);
         return dadosCompra;
     }
 
